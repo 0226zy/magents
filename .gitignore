@@ -1,0 +1,15 @@
+# 运行产物
+logs/
+validation/
+*.log
+
+# 凭据
+.env
+
+# 编译产物
+/kimi-chat
+/agent
+/agentcli
+/experiment12
+*.test
+*.out

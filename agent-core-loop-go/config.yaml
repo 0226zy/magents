@@ -1,0 +1,24 @@
+# Agent (Moonshot) API 配置文件
+# api_key 留空时自动读取环境变量 MOONSHOT_API_KEY / KIMI_API_KEY
+api_key: ""
+
+# OpenAI 兼容端点
+base_url: "https://api.moonshot.cn/v1"
+
+# 模型名。注意：kimi-k3 等推理模型只允许 temperature=1
+model: "kimi-k2.6"
+
+# 单次请求超时（秒）
+timeout_seconds: 180
+
+# 核心循环上限，防止模型反复请求同一个工具陷入死循环
+max_iterations: 8
+
+# 轨迹日志文件目录（每次运行生成一个带时间戳的文件）
+log_dir: "logs"
+
+# 是否记录模型原始响应到单独的 raw 日志文件（不上终端）；默认 true
+enable_raw_log: true
+
+# 系统提示词
+system_prompt: "You are a helpful assistant. Use tools to get real-time information when needed."
