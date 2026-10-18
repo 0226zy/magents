@@ -1,0 +1,6 @@
+# 索引产物
+data/index.json
+
+# 第三方课程语料（版权原因不入库，本地放置即可）
+data/docs/*.md
+!data/docs/.gitkeep
