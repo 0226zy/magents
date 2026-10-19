@@ -13,3 +13,7 @@ validation/
 /experiment12
 *.test
 *.out
+.ftp
+
+# dsh-go 构建产物
+bin/

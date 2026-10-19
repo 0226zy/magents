@@ -59,6 +59,7 @@
 | agent-core-loop-go | cmd/agent | AgentService.Execute | ChatModelPort / ToolPort / TrajectoryPort / RawLogPort | MoonshotClient / ToolRegistry / Trajectory+RawFile |
 | web-search-agent-go | cmd/agentcli, cmd/experiment12 | react（ReAct 循环）、session（提问用例） | ChatCaller / FormulaRunner | moonshot（chat+formula）|
 | agent-with-event-trigger-go | cmd/server, cmd/client, cmd/eventloop, cmd/experiment61 | agent（事件处理循环）、monitor（超时监控）、eventloop（触发器汇流）、mailbox（实验 6-1 编排） | ChatModelPort / ToolPort / MCPPort / TrajectoryPort / MailboxPort / ArtifactPort / EvidencePort / TriggerSource / Clock | LLMClient / BuiltinTools / MCPManager（stdio）/ TrajectoryFile / UnipileClient / EvidenceStore / 定时器与文件监听触发器 |
+| dsh-go | cmd/dshd | agent.Loop.RunTurn（ReAct 循环）、session.Manager（resume/fork/replay/search） | LLMPort / Tool / SessionStorePort / Hook / StatusBarPort / SessionRuntime | openai 兼容适配器 / storejsonl / tools（bash·文件·搜索）/ policy / statusbar |
 
 ## 提交前自检
 
