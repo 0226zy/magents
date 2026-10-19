@@ -43,7 +43,12 @@ func absPath(cwd, p string) string {
 }
 
 // schema 小助手：构造 JSON Schema object。
+// required 缺省时必须是 [] 而非 null——部分模型 API（如 DeepSeek）校验
+// "required" 字段类型为 array，null 会直接 400。
 func schema(props map[string]any, required ...string) map[string]any {
+	if required == nil {
+		required = []string{}
+	}
 	return map[string]any{"type": "object", "properties": props, "required": required}
 }
 

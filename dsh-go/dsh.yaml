@@ -21,7 +21,7 @@ model:
   max_tokens: 8192
   timeout_seconds: 120
 
-models_file: "models.yaml"           # LLM 模型信息资源（LLMInfoRepo 本地文件实现；后续可换 DB）
+models_file: "./models.yaml"           # LLM 模型信息资源（LLMInfoRepo 本地文件实现；后续可换 DB）
 
 skills_dir: "skills"                 # 工程技能库（agentskills.io 兼容；目录不存在/为空 = 不启用）
                                      # 预置 arch-design（架构/代码设计引导）+ 8 个全栈专项 skill
@@ -47,7 +47,7 @@ tools:
   glob_max_results: 200
 
 storage:
-  data_dir: "data"                   # 会话日志（append-only JSONL）、spill 输出
+  data_dir: "./data/"                   # 会话日志（append-only JSONL）、spill 输出
 
 # MCP 工具生态（Model Context Protocol）：空 = 不启用。
 # 工具以 mcp__<server>__<tool> 命名注册；read_only: true 的 server 工具免审批。
