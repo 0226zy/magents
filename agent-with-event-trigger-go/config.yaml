@@ -1,0 +1,50 @@
+# 事件驱动 Agent 运行配置
+# 优先级：命令行 flag > 环境变量 > .env > 本文件 > 内置默认值
+
+# dashscope | qwen | bailian | siliconflow | doubao | kimi | moonshot | openrouter
+provider: "kimi"
+# 留空则读 provider 对应的环境变量（KIMI_API_KEY / DASHSCOPE_API_KEY / ...）
+api_key: ""
+# 留空用 provider 默认模型
+model: ""
+# 留空用 provider 默认端点
+base_url: ""
+
+# 推理模型（kimi-k3 / gpt-5）会被自动改写为 1
+temperature: 0.7
+max_tokens: 4096
+timeout_seconds: 180
+# 单个事件最多允许的工具调用轮数
+max_iterations: 20
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+
+hints:
+  enable_timestamps: true
+  enable_tool_counter: true
+  enable_todo_list: true
+  enable_detailed_errors: true
+  enable_system_state: true
+  # 用虚拟时钟推进时间，便于演示超时逻辑而不必真的等
+  simulate_time_delay: false
+  save_trajectory: true
+  trajectory_file: "event_agent_trajectory.json"
+
+monitor:
+  # 开启后，用户长时间不说话或后台进程跑太久会自动产生提醒事件
+  enabled: false
+  interval_seconds: 10
+  user_timeout_seconds: 60
+  process_timeout_seconds: 30
+
+mcp:
+  enabled: false
+  # 命令与参数必须写全。原 Python 版把路径硬编码成不存在的位置，
+  # 三个服务器全部静默加载失败；这里加载结果会逐个回报。
+  servers:
+    - name: "collaboration"
+      command: "python3"
+      args:
+        - "../../ai-agent-book/chapter4/collaboration-tools/src/main.py"
